@@ -1,0 +1,603 @@
+/* reset e variabili css */
+
+:root {
+   --white: white;
+   --grey: #F0F0F0;
+   --bg-color-light: #140520;
+   --bg-color-dark: #0A001F;
+   --detail-color-light: #B355D4;
+   --detail-color-dark: #462BEF;
+   --placeholder-color: #0A001F80;
+   --bg-color-dark-setopacity: #0A001F80;
+   --darkpurple-hover-color: #29123A;
+   --paragraph: 16px;
+   --title-sm: 24px;
+   --title-lg: 36px;
+   --font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, sans-serif;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+body, h1, p, li, a {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+body {
+    gap: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li, h1, p, a {
+    color: var(--white);
+    font-family: var(--font-family);
+}
+
+.mt {
+    margin-top: 120px !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+/* parte superiore sito */
+
+.upper-section {
+    width: 100%;
+    padding: 0 0 120px 0;
+    background: linear-gradient(89.75deg, var(--bg-color-light) 0%, var(--bg-color-dark) 100%);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.container {
+    max-width: 1376px;
+    margin: auto;
+    padding: 0 50px;
+}
+
+/* navbar */
+
+.logo {
+    font-size: 36px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 45px 0%;
+}
+
+.navlinks {
+    gap: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+}
+
+.navlinks li {
+    font-size: 16px;
+}
+
+.navlinks li:not([class="active"]) {
+    box-sizing: border-box;
+    padding: 8.5px 18.5px;
+    border-radius: 7px;
+    transition: all .5s ease;
+    border: 1.5px solid #774FE900;
+}
+
+.navlinks li:not([class="active"]):hover {
+    border: 1.5px solid var(--detail-color-light);
+    transition: all .5s ease;
+    cursor: pointer;
+}
+
+.active {
+    background: linear-gradient(73.55deg, var(--detail-color-dark) -24.96%, var(--detail-color-light) 107.37%);
+    border-radius: 7px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.active:hover {
+    cursor: pointer;
+}
+
+/* riquadro ricerca voli */
+
+.booking {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px 30px;
+    background: linear-gradient(89.64deg, var(--detail-color-dark) -15.98%, var(--detail-color-light) 103.05%);
+    border-radius: 15px;
+    gap: 25px;
+    animation: gradient 3s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0 50%;
+	}
+	50% {
+		background-position: 50% 100%;
+	}
+	100% {
+		background-position: 0 50%;
+	}
+}
+
+.booking-form {
+    gap: 10px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+}
+
+.darkpurple-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: var(--bg-color-light);
+    transition: background-color .5s ease;
+}
+
+.darkpurple-btn:hover {
+    background-color: var(--darkpurple-hover-color);
+    transition: background-color .5s ease;
+    cursor: pointer;
+}
+
+.btn-flex {
+    flex-grow: 1;
+}
+
+#provenienza, #destinazione, #partenza, #ritorno {
+    flex-grow: 4;
+}
+
+.viaggiatori {
+    flex-grow: 6;
+}
+
+#provenienza, #destinazione, #partenza, #viaggiatori, #ritorno, .darkpurple-btn {
+    font-size: var(--paragraph);
+    padding: 20px 25px;
+    border-radius: 7px;
+    border: none;
+}
+
+#provenienza, #destinazione, #partenza, #viaggiatori, #ritorno {
+    outline: none;
+}
+
+input::placeholder {
+    font-size: 16px;
+    color: var(--placeholder-color);
+}
+
+/* viaggiatori floating window */
+
+.viaggiatori p {
+    color: var(--placeholder-color);
+}
+
+
+.viaggiatori-modal {
+    position: absolute;
+    z-index: 1;
+    padding: 10px 0;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 24px 36px;
+    border-radius: 7px;
+    align-items: stretch;
+    flex-direction: column;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    gap: 36px;
+}
+
+.viaggiatori-input {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 25px;
+    align-items: center;
+    color: var(--placeholder-color);
+    font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, sans-serif;
+    font-size: var(--paragraph);
+    background-color: var(--white);
+    cursor: pointer;
+    border-radius: 7px;
+    min-width: 120px;
+}
+
+.modal-title {
+    font-size: var(--title-sm);
+    color: var(--bg-color-dark);
+}
+
+.modal-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.modal-buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 55px;
+    align-items: center;
+}
+
+.modal-buttons-wrapper img {
+    cursor: pointer;
+}
+
+#remove-passenger-icon {
+    opacity: .5;
+}
+
+/* custom checkbox */
+
+.checkbox-ar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.checkbox {
+    background-color: var(--white);
+    accent-color: var(--bg-color-dark);
+    width: 19px;
+    height: 19px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* mobile navbar */
+
+.navlinks-mobile {
+    padding: 0 0 25px 0;
+    margin: 0;
+    list-style: none;
+}
+
+.navlinks-mobile li {
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.active-mobile {
+    font-weight: bold;
+    background: linear-gradient(73.55deg, var(--detail-color-dark) -24.96%, var(--detail-color-light) 107.37%);
+}
+
+.navbar-collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+
+.navbar-expanded {
+    max-height: 300px;
+    transition: all 1s ease;
+}
+
+/* parte inferiore sito */
+
+/* scopri */
+
+.scopri {
+    /* justify-content: space-between; */
+    width: 1376px;
+    display: flex;
+    background-color: var(--bg-color-dark);
+    border-radius: 20px;
+}
+
+.scopri-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 100px 75px;
+    gap: 25px;
+}
+
+.scopri-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.scopri-text-wrapper p {
+    font-size: var(--paragraph);
+}
+
+.scopri-text-wrapper h1 {
+    font-size: var(--title-lg);
+}
+
+.lower-section {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    align-items: center;
+    gap: 45px;
+}
+
+.btn-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--bg-color-dark);
+    background-color: var(--white);
+    padding: 10px 30px;
+    transition: background-color .5s ease;
+    border-radius: 7px;
+}
+
+.btn-white:hover {
+    background-color: var(--grey);
+    transition: background-color .5s ease;
+    cursor: pointer;
+}
+
+.scopri img {
+    flex-grow: 1;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 0px 20px 20px 0;
+}
+
+/* cards destinazioni */
+
+.destinazioni-cards {
+    width: 1376px;
+    justify-content: space-between;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.card {
+    background-color: var(--grey);
+    border-radius: 14px;
+    flex-grow: 1;
+    display: flex;
+}
+
+.card-text-wrapper h1 {
+    font-size: var(--title-sm);
+    color: var(--bg-color-dark);
+}
+
+.card-text-wrapper p {
+    font-size: var(--paragraph);
+    color: var(--placeholder-color);
+}
+
+.outline-btn-purple {
+    transition: all .5s ease;
+    border: 1.5px solid var(--detail-color-dark);
+    border-radius: 7px;
+    padding: 10px 30px;
+}
+
+.outline-btn-purple:hover {
+    transition: all .5s ease;
+    background-color: var(--detail-color-dark);
+    cursor: pointer;
+}
+
+.outline-btn-purple:hover {
+    transition: all .5s ease;
+    color: var(--white);
+}
+
+.outline-btn-purple {
+    transition: all .5s ease;
+    color: var(--detail-color-dark);
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px;
+}
+
+/* footer */
+
+.footer {
+    flex-direction: row;
+    justify-content: center;
+    background: linear-gradient(89.75deg, var(--bg-color-dark) 0%, var(--bg-color-light) 100%);
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+}
+
+.footer-content {
+    justify-content: space-between;
+    width: 1376px;
+    padding: 50px 0;
+}
+
+.footer-logo {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.footer-links {
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+.footer-links a {
+    transition: color .5s ease;
+}
+
+.footer-links a:hover {
+    color: var(--detail-color-light);
+    cursor: pointer;
+    transition: color .5s ease;
+}
+
+/* media breakpoints */
+
+@media screen and (max-width: 1450px) {
+
+    .scopri img {
+        height: 350px;
+        border-radius: 20px;
+    }    
+
+    .upper-section {
+        padding: 0;
+        border-radius: 0 0 0 15px;
+    }
+
+    .hamburger-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    .navbar ul {
+        display: none;
+    }
+
+    .navbar {
+        padding: 30px 5%;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .booking {
+        border-radius: 0 0 0 15px;
+    }
+
+    .booking-form {
+        flex-direction: column;
+    }
+
+    .mt {
+        margin: 0 !important;
+    }
+
+    .viaggiatori-modal {
+        max-width: 300px;
+    }
+
+    .modal-buttons-wrapper {
+        padding: 0 35px;
+    }
+
+    .ritorno-expanded {
+        max-width: 100%;
+    }
+
+    .scopri {
+        flex-direction: column-reverse;
+        width: 95%;
+        margin: auto;
+    }
+
+    .lower-section {
+        align-items: stretch;
+    }
+
+    .scopri-wrapper {
+        padding: 50px 45px;
+    }
+
+    .destinazioni-cards {
+        align-self: center;
+    }
+
+    .destinazioni-cards {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .footer-content {
+        max-width: 90%;
+    }
+
+    .footer-links {
+        gap: 30px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    body {
+        gap: 50px;
+    }
+
+    .viaggiatori-modal {
+        max-width: 275px;
+    }
+
+    .modal-buttons-wrapper {
+        padding: 0 15px;
+    }
+
+    .scopri-wrapper {
+        padding: 50px 30px;
+    }
+
+    .scopri-wrapper {
+        align-items: stretch;
+    }
+
+    .scopri {
+        width: 100%;
+        margin: none;
+        border-radius: 0 20px 0 20px;
+    }
+
+    .scopri img {
+        border-radius: 0 20px 0 20px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+}

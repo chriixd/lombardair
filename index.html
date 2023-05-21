@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="upper-section">
+        <div class="container">
+            <div class="navbar" id="navbar">
+                <h1 class="logo">AirScroto</h1>
+                <img src="Assets/hamburger-icon.svg" onclick="expandNavbar()" class="hidden hamburger-icon" alt="">
+                <ul class="navlinks">
+                    <li class="active">
+                        <a href="#index">Home</a>
+                    </li>
+                    <li>
+                        <a href="#destinazioni">Destinazioni</a>
+                    </li>
+                    <li>
+                        <a href="#check-in">Check-In</a>
+                    </li>
+                    <li>
+                        <a href="#chi-siamo">Chi Siamo</a>
+                    </li>
+                    <li>
+                        <a href="#contattaci">Contattaci</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="navbar-collapsed" class="navbar-collapsed">
+            <ul class="navlinks-mobile">
+                <li class="active-mobile">
+                    <a href="#index">Home</a>
+                </li>
+                <li>
+                    <a href="#destinazioni">Destinazioni</a>
+                </li>
+                <li>
+                    <a href="#check-in">Check-In</a>
+                </li>
+                <li>
+                    <a href="#chi-siamo">Chi Siamo</a>
+                </li>
+                <li>
+                    <a href="#contattaci">Contattaci</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container mt">
+            <div class="booking">
+                <h1>Dove vuoi andare?</h1>
+                <form class="booking-form" action="">
+                    <input id="provenienza" type="text" name="provenienza" id="" placeholder="Provenienza">
+                    <input id="destinazione" type="text" name="destinazione" id="" placeholder="Destinazione">
+                    <div class="viaggiatori">
+                        <div class="viaggiatori-input" onclick="modalExpander()">
+                            <p id="viaggiatori-input" >Viaggiatori</p>
+                            <img src="Assets/dropdown-icon.svg" alt="">
+                        </div>
+                        <div class="viaggiatori-modal">
+                            <div id="modal-content" class="modal-content hidden">
+                                <div class="modal-text-wrapper">
+                                    <h1 class="modal-title">
+                                        Viaggiatori
+                                    </h1>
+                                    <p class="modal-subtitle">
+                                        Economy, classi superiori non disponibili.
+                                    </p>
+                                </div>
+                                <div class="modal-buttons-wrapper">
+                                    <img id="remove-passenger-icon" onclick="removePassenger()" src="Assets/remove-passenger.svg" alt="">
+                                    <p id="passenger-count" class="passenger-count">0</p>
+                                    <img id="add-passenger-icon" onclick="addPassenger()" src="Assets/add-passenger.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input id="partenza" type="text" name="partenza" id="" placeholder="Partenza">
+                    <input class="hidden" id="ritorno" type="text" name="ritorno" id="" placeholder="Ritorno">
+                    <a class="darkpurple-btn btn-flex" href="#Cerca">Cerca</a>
+                </form>
+                <div class="checkbox-ar">
+                    <input id="checkbox-ar" onclick="validateAr()" type="checkbox" name="" id="" class="checkbox">
+                    <p>Cerca voli A/R</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lower-section">
+            <div class="scopri flex">
+                <div class="scopri-wrapper">
+                    <div class="scopri-text-wrapper">
+                        <h1>Scopri Bergamo</h1>
+                        <p>Offerte A/R a partire da 39€, incredibili sconti
+                            <br>
+                           sugli alloggi alla prenotazione.
+                        </p>
+                    </div>
+                        <a class="btn-white" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUIcmlja3JvbGw%3D">Scopri</a>
+                </div>
+                <img src="Assets/bergamo.jpeg" alt="">
+            </div>
+            <div class="destinazioni-cards flex">
+                <div class="card">
+                    <div class="card-wrapper">
+                        <div class="card-text-wrapper">
+                            <h1>Bergamo</h1>
+                            <p>Orio al Serio</p>
+                        </div>
+                        <a class="outline-btn-purple" href="#navbar" onclick="fillBergamo()">Trova un'offerta</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-wrapper">
+                        <div class="card-text-wrapper">
+                            <h1>Milano</h1>
+                            <p>Malpensa</p>
+                        </div>
+                        <a class="outline-btn-purple" href="#navbar" onclick="fillMalpensa()">Trova un'offerta</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-wrapper">
+                        <div class="card-text-wrapper">
+                            <h1>Milano</h1>
+                            <p>Linate</p>
+                        </div>
+                        <a class="outline-btn-purple" href="#navbar" onclick="fillLinate()">Trova un'offerta</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="footer flex">
+        <div class="footer-content flex">
+            <div class="footer-links flex">
+                <a href="">Check-In</a>
+                <a href="">Chi Siamo</a>
+                <a href="">Contattaci</a>
+                <a href="">Home</a>
+                <a href="">Destinazioni</a>
+            </div>
+            <div class="footer-logo flex">
+                <h1 class="logo">AirScroto</h1>
+                <p>All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
