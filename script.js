@@ -3,6 +3,7 @@ var x = 0;
 var modalContent = document.getElementById("modal-content");
 var navbarCollapsed = document.getElementById("navbar-collapsed");
 var passengerCount = parseInt(document.getElementById("passenger-count").innerText);
+var isMobileModeOn = window.matchMedia("(max-width: 1450px)");
 
 function modalExpander() {
    if (counter == 0) {
@@ -75,9 +76,9 @@ function expandNavbar() {
 
 function validateAr() {
     if (document.getElementById("checkbox-ar").checked) {
-        document.getElementById("ritorno").classList.remove("hidden");
+        document.querySelector(".ritorno").classList.remove("hidden");
     } else {
-        document.getElementById("ritorno").classList.add("hidden");
+        document.querySelector(".ritorno").classList.add("hidden");
     }
 }
 
@@ -100,3 +101,29 @@ $(document).on('click', 'a[href^="#"]', function (event) {
         scrollTop: $($.attr(this, 'href')).offset().top
     }, 500);
 });
+
+function breakpointListener(isMobileModeOn) {
+    if (isMobileModeOn.matches) {
+        navbarCollapsed.style.display = "";
+    } else {
+        navbarCollapsed.style.display = "none";
+        navbarCollapsed.classList.remove("navbar-expanded");
+    }
+}
+
+breakpointListener(isMobileModeOn)
+isMobileModeOn.addListener(breakpointListener)
+
+$( function() {
+	$( "#partenza" ).datepicker({
+		dateFormat: "dd-mm-yy"
+		,	duration: "fast"
+	});
+} );
+
+$( function() {
+	$( "#ritorno" ).datepicker({
+		dateFormat: "dd-mm-yy"
+		,	duration: "fast"
+	});
+} );
