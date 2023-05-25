@@ -3,10 +3,11 @@
 <head>
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LombardAir</title>
+    <title>Document</title>
 </head>
 <body>
     <div class="upper-section">
@@ -56,8 +57,13 @@
             <div class="booking">
                 <h1>Dove vuoi andare?</h1>
                 <form class="booking-form" action="">
-                    <input id="provenienza" type="text" name="provenienza" id="" placeholder="Provenienza">
-                    <input id="destinazione" type="text" name="destinazione" id="" placeholder="Destinazione">
+                    <input class="provenienza" type="text" name="provenienza" id="provenienza" list="aeroporti" placeholder="Da">
+                    <input class="destinazione" type="text" name="destinazione" id="destinazione" list="aeroporti" placeholder="A">
+                    <datalist id="aeroporti">
+                        <option value="Orio al Serio (BGY)">
+                        <option value="Milano Malpensa (MXP)">
+                        <option value="Milano Linate (LIN)">    
+                    </datalist>
                     <div class="viaggiatori">
                         <div class="viaggiatori-input" onclick="modalExpander()">
                             <p id="viaggiatori-input" >Viaggiatori</p>
@@ -81,8 +87,8 @@
                             </div>
                         </div>
                     </div>
-                    <input id="partenza" type="text" name="partenza" id="" placeholder="Partenza">
-                    <input class="hidden" id="ritorno" type="text" name="ritorno" id="" placeholder="Ritorno">
+                    <input class="partenza" type="text" id="partenza" placeholder="Partenza">
+                    <input class="hidden ritorno" type="text" id="ritorno" placeholder="Ritorno">
                     <a class="darkpurple-btn btn-flex" href="#Cerca">Cerca</a>
                 </form>
                 <div class="checkbox-ar">
