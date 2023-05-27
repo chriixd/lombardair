@@ -7,17 +7,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LombardAir</title>
 </head>
 <body>
     <div class="upper-section">
         <div class="container">
             <div class="navbar" id="navbar">
-                <h1 class="logo">AirScroto</h1>
+                <h1 class="logo">LombardAir</h1>
                 <img src="Assets/hamburger-icon.svg" onclick="expandNavbar()" class="hidden hamburger-icon" alt="">
                 <ul class="navlinks">
                     <li class="active">
-                        <a href="#index">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
                         <a href="#destinazioni">Destinazioni</a>
@@ -37,7 +37,7 @@
         <div id="navbar-collapsed" class="navbar-collapsed">
             <ul class="navlinks-mobile">
                 <li class="active-mobile">
-                    <a href="#index">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
                     <a href="#destinazioni">Destinazioni</a>
@@ -56,13 +56,13 @@
         <div class="container mt">
             <div class="booking">
                 <h1>Dove vuoi andare?</h1>
-                <form class="booking-form" action="">
-                    <input class="provenienza" type="text" name="provenienza" id="provenienza" list="aeroporti" placeholder="Da">
-                    <input class="destinazione" type="text" name="destinazione" id="destinazione" list="aeroporti" placeholder="A">
+                <form autocomplete="off" class="booking-form" action="">
+                    <input onclick="modalClose()" class="provenienza" type="text" name="provenienza" id="provenienza" list="aeroporti" placeholder="Da">
+                    <input onclick="modalClose()" class="destinazione" type="text" name="destinazione" id="destinazione" list="aeroporti" placeholder="A">
                     <datalist id="aeroporti">
-                        <option value="Orio al Serio (BGY)">
-                        <option value="Milano Malpensa (MXP)">
-                        <option value="Milano Linate (LIN)">    
+                        <option value="Orio al Serio BGY">
+                        <option value="Milano Malpensa MXP">
+                        <option value="Milano Linate LIN">    
                     </datalist>
                     <div class="viaggiatori">
                         <div class="viaggiatori-input" onclick="modalExpander()">
@@ -87,9 +87,9 @@
                             </div>
                         </div>
                     </div>
-                    <input class="partenza" type="text" id="partenza" placeholder="Partenza">
-                    <input class="hidden ritorno" type="text" id="ritorno" placeholder="Ritorno">
-                    <a class="darkpurple-btn btn-flex" href="#Cerca">Cerca</a>
+                    <input class="partenza" onchange="validateDate()" onclick="modalClose()" type="text" id="partenza" placeholder="Partenza">
+                    <input class="hidden ritorno" onchange="validateDate()" onclick="modalClose()" type="text" id="ritorno" placeholder="Ritorno">
+                    <a id="search-button" onclick="ricercaBiglietti()" class="darkpurple-btn btn-flex" href="#checkbox-ar">Cerca</a>
                 </form>
                 <div class="checkbox-ar">
                     <input id="checkbox-ar" onclick="validateAr()" type="checkbox" name="" id="" class="checkbox">
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-    <div class="lower-section">
+    <div class="lower-section" id="lower-section">
             <div class="scopri flex">
                 <div class="scopri-wrapper">
                     <div class="scopri-text-wrapper">
@@ -142,6 +142,141 @@
                 </div>
             </div>
     </div>
+    <div id="ticket-oneway-section-wrapper" class="hidden">
+        <h1 id="tickets-title">Mostra risultati per</h1>
+        <div class="ticket-oneway-section flex" id="ticket-oneway-section">
+            <div class="sponsor-list">
+                <div class="sponsor">
+                    <div class="sponsor-text-wrapper flex">
+                        <h1>Noleggia un'auto a Bergamo</h1>
+                        <p>Trova le migliori offerte</p>
+                    </div>
+                    <a class="outline-btn-purple" href="">Cerca</a>
+                </div>
+                <div class="sponsor">
+                    <div class="sponsor-text-wrapper flex">
+                        <h1>Noleggia un'auto a Bergamo</h1>
+                        <p>Trova le migliori offerte</p>
+                    </div>
+                    <a class="outline-btn-purple" href="">Cerca</a>
+                </div>
+            </div>
+            <div class="biglietti flex">
+                <div class="biglietto flex">
+                    <div class="ticket-text-wrapper flex">
+                        <div class="departure-wrapper flex">
+                            <h1 class="deptime" id="deptime1" >06:30</h1>
+                            <p class="depairport" id="depairport1" >MXP</p>
+                        </div>
+                        <div class="line"></div>
+                        <img id="planesvg" src="Assets/plane.svg" alt="">
+                        <div class="line"></div>
+                        <div class="arrival-wrapper flex">
+                            <h1 class="arrivaltime" id="arrivaltime1" >07:00</h1>
+                            <p class="arrivalairport" id="arrivalairport1" >MXP</p>
+                        </div>
+                    </div>
+                    <div class="left-ticket-part flex">
+                        <div class="price-wrapper">
+                            <p>A partire da</p>
+                            <h1 id="pricetag1">39,99</h1>
+                        </div>
+                        <div class="buy-button">
+                            <p>Non Acquistabile</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="biglietto flex">
+                    <div class="ticket-text-wrapper flex">
+                        <div class="departure-wrapper flex">
+                            <h1 class="deptime" id="deptime2" >12:15</h1>
+                            <p class="depairport" id="depairport2" >MXP</p>
+                        </div>
+                        <div class="line"></div>
+                        <img id="planesvg" src="Assets/plane.svg" alt="">
+                        <div class="line"></div>
+                        <div class="arrival-wrapper flex">
+                            <h1 class="arrivaltime" id="arrivaltime2" >12:45</h1>
+                            <p class="arrivalairport" id="arrivalairport2" >MXP</p>
+                        </div>
+                    </div>
+                    <div class="left-ticket-part flex">
+                        <div class="price-wrapper">
+                            <p>A partire da</p>
+                            <h1 id="pricetag1">39,99</h1>
+                        </div>
+                        <div class="buy-button">
+                            <p>Non Acquistabile</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="biglietto flex">
+                    <div class="ticket-text-wrapper flex">
+                        <div class="departure-wrapper flex">
+                            <h1 class="deptime" id="deptime3" >16:45</h1>
+                            <p class="depairport" id="depairport3" >MXP</p>
+                        </div>
+                        <div class="line"></div>
+                        <img id="planesvg" src="Assets/plane.svg" alt="">
+                        <div class="line"></div>
+                        <div class="arrival-wrapper flex">
+                            <h1 class="arrivaltime" id="arrivaltime3" >17:15</h1>
+                            <p class="arrivalairport" id="arrivalairport3" >MXP</p>
+                        </div>
+                    </div>
+                    <div class="left-ticket-part flex">
+                        <div class="price-wrapper">
+                            <p>A partire da</p>
+                            <h1 id="pricetag1">39,99</h1>
+                        </div>
+                        <div class="buy-button">
+                            <p>Non Acquistabile</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="biglietto flex">
+                    <div class="ticket-text-wrapper flex">
+                        <div class="departure-wrapper flex">
+                            <h1 class="deptime" id="deptime4" >22:00</h1>
+                            <p class="depairport" id="depairport4" >MXP</p>
+                        </div>
+                        <div class="line"></div>
+                        <img id="planesvg" src="Assets/plane.svg" alt="">
+                        <div class="line"></div>
+                        <div class="arrival-wrapper flex">
+                            <h1 class="arrivaltime" id="arrivaltime4" >22:30</h1>
+                            <p class="arrivalairport" id="arrivalairport4" >MXP</p>
+                        </div>
+                    </div>
+                    <div class="left-ticket-part flex">
+                        <div class="price-wrapper">
+                            <p>A partire da</p>
+                            <h1 id="pricetag1">39,99</h1>
+                        </div>
+                        <div class="buy-button">
+                            <p>Non Acquistabile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sponsor-list">
+                <div class="sponsor">
+                    <div class="sponsor-text-wrapper flex">
+                        <h1>Noleggia un'auto a Bergamo</h1>
+                        <p>Trova le migliori offerte</p>
+                    </div>
+                    <a class="outline-btn-purple" href="">Cerca</a>
+                </div>
+                <div class="sponsor">
+                    <div class="sponsor-text-wrapper flex">
+                        <h1>Noleggia un'auto a Bergamo</h1>
+                        <p>Trova le migliori offerte</p>
+                    </div>
+                    <a class="outline-btn-purple" href="">Cerca</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="footer flex">
         <div class="footer-content flex">
             <div class="footer-links flex">
@@ -152,7 +287,7 @@
                 <a href="">Destinazioni</a>
             </div>
             <div class="footer-logo flex">
-                <h1 class="logo">AirScroto</h1>
+                <h1 class="logo">LombardAir</h1>
                 <p>All rights reserved.</p>
             </div>
         </div>
