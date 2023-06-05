@@ -55,8 +55,10 @@
         </div>
         <div class="container mt">
             <div class="booking">
-                <h1>Dove vuoi andare?</h1>
-                <form autocomplete="off" class="booking-form" action="">
+                <h1 class="booking-title">
+                    Dove vuoi andare?
+                </h1>
+                <form class="booking-form" action="">
                     <input onclick="modalClose()" class="provenienza" type="text" name="provenienza" id="provenienza" list="aeroporti" placeholder="Da">
                     <input onclick="modalClose()" class="destinazione" type="text" name="destinazione" id="destinazione" list="aeroporti" placeholder="A">
                     <datalist id="aeroporti">
@@ -143,7 +145,18 @@
             </div>
     </div>
     <div id="ticket-oneway-section-wrapper" class="hidden">
-        <h1 id="tickets-title">Mostra risultati per</h1>
+        <div class="flex date-show">
+            <img src="Assets/arrow-left.svg" onclick="dateBack()" alt="" class="left-date-button" id="left-date-button">
+            <div class="date-show-wrap flex">
+                <div class="date-sx"></div>
+                <div class="date">
+                    <h1 id="giorno-ricerca">15</h1>
+                    <p id="mese-ricerca">Agosto</p>
+                </div>
+                <div class="date-dx"></div>
+            </div>
+            <img src="Assets/arrow-right.svg" onclick="dateForward()" alt="" class="right-date-button" id="right-date-button">
+        </div>
         <div class="ticket-oneway-section flex" id="ticket-oneway-section">
             <div class="sponsor-list">
                 <div class="sponsor">
@@ -203,7 +216,7 @@
                     <div class="left-ticket-part flex">
                         <div class="price-wrapper">
                             <p>A partire da</p>
-                            <h1 id="pricetag1">39,99</h1>
+                            <h1 id="pricetag2">39,99</h1>
                         </div>
                         <div class="buy-button">
                             <p>Non Acquistabile</p>
@@ -227,7 +240,7 @@
                     <div class="left-ticket-part flex">
                         <div class="price-wrapper">
                             <p>A partire da</p>
-                            <h1 id="pricetag1">39,99</h1>
+                            <h1 id="pricetag3">39,99</h1>
                         </div>
                         <div class="buy-button">
                             <p>Non Acquistabile</p>
@@ -251,7 +264,7 @@
                     <div class="left-ticket-part flex">
                         <div class="price-wrapper">
                             <p>A partire da</p>
-                            <h1 id="pricetag1">39,99</h1>
+                            <h1 id="pricetag4">39,99</h1>
                         </div>
                         <div class="buy-button">
                             <p>Non Acquistabile</p>

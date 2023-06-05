@@ -190,6 +190,58 @@ function ricercaBiglietti() {
     var partenza = String(document.getElementById("partenza").value);
     var ritorno = String(document.getElementById("ritorno").value);
     var viaggiatori = String(document.getElementById("viaggiatori-input").innerText);
+    var giornoPartenza = parseInt(partenza.slice(0, 2));
+    var mesePartenzaInt = parseInt(partenza.slice(3, 5));
+    var mesePartenza = "";
+
+    switch (mesePartenzaInt) {
+        case 01:
+            mesePartenza = "Gennaio";
+            break;
+        case 02:
+            mesePartenza = "Febbraio";
+            break;
+        case 03:
+            mesePartenza = "Marzo";
+            break;
+        case 04:
+            mesePartenza = "Aprile";
+            break;
+        case 05:
+            mesePartenza = "Maggio";
+            break;
+        case 06:
+            mesePartenza = "Giugno";
+            break;
+        case 07:
+            mesePartenza = "Luglio";
+            break;
+        case 08:
+            mesePartenza = "Agosto";
+            break;
+        case 09:
+            mesePartenza = "Settembre";
+            break;
+        case 10:
+            mesePartenza = "Ottobre";
+            break;
+        case 11:
+            mesePartenza = "Novembre";
+            break;
+        case 12:
+            mesePartenza = "Dicembre";
+            break;
+        default: 
+            mesePartenza = "default.date";
+            break;
+    }
+    var minOneway = Math.ceil(1);
+    var maxOneway = Math.floor(4);
+    var pricetag1 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag2 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag3 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag4 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    console.log(pricetag1*5-0.01, pricetag2*5-0.01, pricetag3*5-0.01, pricetag4*5-0.01);
 
     if (document.getElementById("checkbox-ar").checked) {
         if (provenienza && destinazione && partenza && ritorno != "" && provenienza != destinazione && viaggiatori != "Viaggiatori") {
@@ -203,7 +255,11 @@ function ricercaBiglietti() {
             for(let num = 1; num < 5; num++) {
                 document.getElementById("arrivalairport" + num).innerText = destinazione;
             }
-            document.getElementById("tickets-title").innerText = "Mostra risultati per " + partenza + " - " + ritorno + ":"; 
+            // document.getElementById("tickets-title").innerText = "Mostra risultati per " + partenza + " - " + ritorno + ":"; 
+            document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+            document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+            document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+            document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
         } else {
             document.getElementById("search-button").href = "#navbar";
         }
@@ -212,7 +268,6 @@ function ricercaBiglietti() {
             document.getElementById("search-button").href = "#checkbox-ar";
             document.getElementById("lower-section").style.display = "none";
             document.getElementById("ticket-oneway-section-wrapper").classList.remove("hidden");
-            // document.getElementById("tickets-title").classList.remove("hidden");
             for(let num = 1; num < 5; num++) {
                 document.getElementById("depairport" + num).innerText = provenienza;
             }
@@ -220,10 +275,230 @@ function ricercaBiglietti() {
             for(let num = 1; num < 5; num++) {
                 document.getElementById("arrivalairport" + num).innerText = destinazione;
             }
-            document.getElementById("tickets-title").innerText = "Mostra risultati per " + partenza+ ":";
+            // document.getElementById("tickets-title").innerText = "Mostra risultati per " + partenza+ ":";
+            document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+            document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+            document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+            document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+            document.getElementById("giorno-ricerca").innerText = giornoPartenza;
+            document.getElementById("mese-ricerca").innerText = mesePartenza;
         } else {
             document.getElementById("search-button").href = "#navbar";
         }
     }
 
+}
+
+function priceRan() {
+    document.getElementById("pricetag1") = (Math.random() * (4 - 2) + 2)*5;
+}
+
+function dateBack() {
+    var partenza = String(document.getElementById("partenza").value);
+    var ritorno = String(document.getElementById("ritorno").value);
+    var minOneway = Math.ceil(1);
+    var maxOneway = Math.floor(4);
+    var pricetag1 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag2 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag3 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag4 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var giornoRicerca = parseInt(document.getElementById("giorno-ricerca").innerText);
+    var mesePartenzaInt = parseInt(partenza.slice(3, 5));
+
+    console.log(mesePartenzaInt);
+    
+    switch (mesePartenzaInt) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            if (giornoRicerca == 2) {
+                document.getElementById("left-date-button").style.opacity = 0.5;
+                document.getElementById("left-date-button").style.cursor = "not-allowed";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+            } else if (giornoRicerca == 1) {
+                void(0);
+            } else if (giornoRicerca == 31) {
+                document.getElementById("right-date-button").style.opacity = 1;
+                document.getElementById("right-date-button").style.cursor = "pointer";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+            } else {
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+                if (document.getElementById("checkbox-ar").checked) {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                } else {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                }
+            }
+            break;
+        case 2:
+            if (giornoRicerca == 2) {
+                document.getElementById("left-date-button").style.opacity = 0.5;
+                document.getElementById("left-date-button").style.cursor = "not-allowed";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+            } else if (giornoRicerca == 1) {
+                void(0);
+            } else if (giornoRicerca == 28) {
+                document.getElementById("right-date-button").style.opacity = 1;
+                document.getElementById("right-date-button").style.cursor = "pointer";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+            } else {
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+                if (document.getElementById("checkbox-ar").checked) {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                } else {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                }
+            }
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (giornoRicerca == 2) {
+                document.getElementById("left-date-button").style.opacity = 0.5;
+                document.getElementById("left-date-button").style.cursor = "not-allowed";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+            } else if (giornoRicerca == 1) {
+                void(0);
+            } else if (giornoRicerca == 30) {
+                document.getElementById("right-date-button").style.opacity = 1;
+                document.getElementById("right-date-button").style.cursor = "pointer";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+            } else {
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca - 1;
+                if (document.getElementById("checkbox-ar").checked) {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                } else {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                }
+            }
+            break;
+    }
+}
+
+function dateForward() {
+    var partenza = String(document.getElementById("partenza").value);
+    var ritorno = String(document.getElementById("ritorno").value);
+    var minOneway = Math.ceil(1);
+    var maxOneway = Math.floor(4);
+    var pricetag1 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag2 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag3 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var pricetag4 = Math.floor(Math.random() * (maxOneway - minOneway + 1)) + minOneway;
+    var giornoRicerca = parseInt(document.getElementById("giorno-ricerca").innerText);
+    var mesePartenzaInt = parseInt(partenza.slice(3, 5));
+
+    console.log(mesePartenzaInt);
+    
+    switch (mesePartenzaInt) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            if (giornoRicerca == 30) {
+                document.getElementById("right-date-button").style.opacity = 0.5;
+                document.getElementById("right-date-button").style.cursor = "not-allowed";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+            } else if (giornoRicerca == 31) {
+                void(0);
+            } else if (giornoRicerca == 1) {
+                document.getElementById("left-date-button").style.opacity = 1;
+                document.getElementById("left-date-button").style.cursor = "pointer";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+            } else {
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+                if (document.getElementById("checkbox-ar").checked) {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                } else {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                }
+            }
+            break;
+        case 2:
+            if (giornoRicerca == 27) {
+                document.getElementById("right-date-button").style.opacity = 0.5;
+                document.getElementById("right-date-button").style.cursor = "not-allowed";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+            } else if (giornoRicerca == 28) {
+                void(0);
+            } else if (giornoRicerca == 1) {
+                document.getElementById("left-date-button").style.opacity = 1;
+                document.getElementById("left-date-button").style.cursor = "pointer";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+            } else {
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+                if (document.getElementById("checkbox-ar").checked) {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                } else {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                }
+            }
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (giornoRicerca == 29) {
+                document.getElementById("right-date-button").style.opacity = 0.5;
+                document.getElementById("right-date-button").style.cursor = "not-allowed";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+            } else if (giornoRicerca == 30) {
+                void(0);
+            } else if (giornoRicerca == 1) {
+                document.getElementById("left-date-button").style.opacity = 1;
+                document.getElementById("left-date-button").style.cursor = "pointer";
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+            } else {
+                document.getElementById("giorno-ricerca").innerText = giornoRicerca + 1;
+                if (document.getElementById("checkbox-ar").checked) {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                } else {
+                    document.getElementById("pricetag1").innerText = pricetag1*5-0.01;
+                    document.getElementById("pricetag2").innerText = pricetag2*5-0.01;
+                    document.getElementById("pricetag3").innerText = pricetag3*5-0.01;
+                    document.getElementById("pricetag4").innerText = pricetag4*5-0.01;
+                }
+            }
+            break;
+    }
 }
